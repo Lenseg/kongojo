@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>Тестовое задание</title>
+	<meta name="viewport" content="width=device-width">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.4.1/jquery.min.js"></script>
+	<script src="js/jquery.touchSwipe.min.js"></script>
+	<script src='js/kongojo.js'></script>
+	<script type="text/javascript">
+	$(document).ready(function () {
+		$('#gallery1').kongojo({
+			loader:'724.GIF'
+		});
+		$('#gallery2').kongojo({
+			overflowBackground : 'rgba(0,0,0,.4)'
+		});
+	})
+	</script>
+</head>
+<body>
+	<div id="gallery1">
+		<div>
+			<a href="img/1.jpg" class="gallery_link" target="_blank"><img src="img/s-1.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/2.jpg" class="gallery_link" target="_blank"><img src="img/s-2.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/3.jpg" class="gallery_link" target="_blank"><img src="img/s-3.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/4.jpg" class="gallery_link" target="_blank"><img src="img/s-4.jpg" alt="regular show poster" class="gallery_image"></a>
+		</div>
+	</div>
+	<div id="gallery2">
+		<div>
+			<a href="img/1.jpg" class="gallery_link" target="_blank"><img src="img/s-1.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/2.jpg" class="gallery_link" target="_blank"><img src="img/s-2.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/3.jpg" class="gallery_link" target="_blank"><img src="img/s-3.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/4.jpg" class="gallery_link" target="_blank"><img src="img/s-4.jpg" alt="regular show poster" class="gallery_image"></a>
+		</div>
+	</div>
+</body>
+</html>
