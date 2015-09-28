@@ -1,0 +1,2 @@
+# kongojo
+Jquery gallery plugin
