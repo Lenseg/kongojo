@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
 	<meta charset="UTF-8">
-	<title>Тестовое задание</title>
+	<title>Kongojo demo</title>
 	<meta name="viewport" content="width=device-width">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.4.1/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="js/jquery.touchSwipe.min.js"></script>
 	<script src='js/kongojo.js'></script>
 	<script type="text/javascript">
@@ -15,8 +15,23 @@
 		$('#gallery2').kongojo({
 			overflowBackground : 'rgba(0,0,0,.4)'
 		});
+		$('#gallery3').kongojo({
+			buttons : true
+		});
 	})
 	</script>
+	<style>
+		.kongojo-button{
+			display: block;
+			position: absolute;
+			top: 50%;
+			width: 50px;
+			height: 50px;
+		}
+		.kongojo-button-next{
+			right: 0;
+		}
+	</style>
 </head>
 <body>
 	<div id="gallery1">
@@ -28,6 +43,16 @@
 		</div>
 	</div>
 	<div id="gallery2">
+		<div>
+			<a href="img/1.jpg" class="gallery_link" target="_blank"><img src="img/s-1.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/2.jpg" class="gallery_link" target="_blank"><img src="img/s-2.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/3.jpg" class="gallery_link" target="_blank"><img src="img/s-3.jpg" alt="regular show poster" class="gallery_image"></a>
+			<a href="img/4.jpg" class="gallery_link" target="_blank"><img src="img/s-4.jpg" alt="regular show poster" class="gallery_image"></a>
+		</div>
+	</div>
+	<a class="kongojo-button kongojo-button-prev">prev</a>
+	<a class="kongojo-button kongojo-button-next">next</a>
+	<div id="gallery3">
 		<div>
 			<a href="img/1.jpg" class="gallery_link" target="_blank"><img src="img/s-1.jpg" alt="regular show poster" class="gallery_image"></a>
 			<a href="img/2.jpg" class="gallery_link" target="_blank"><img src="img/s-2.jpg" alt="regular show poster" class="gallery_image"></a>

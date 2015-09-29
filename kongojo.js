@@ -4,6 +4,7 @@
 		overflowBackground:'rgba(255,255,255,.7)'
 		,loader : false
 		,loaderTimeout : 300
+		,buttons : false
 	}
 	function KongojoConstructor(elem,opts){
 		this.elem = $(elem);
@@ -21,7 +22,21 @@
 			,loadTimeout : null
 		}
 		that.functions = {
-    		createMarkup : function(){
+			buttons : {
+				left : function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					console.log('click')
+					that.elem.trigger('prev');
+				}
+				,right : function(e){
+					e.preventDefault();
+					e.stopPropagation();
+					console.log('click')
+					that.elem.trigger('next');
+				}
+			}
+    		,createMarkup : function(){
     			that.vars.imageHolder = $('<div><img class="kongojo-img" src=""></div>',{
 					id:'kongojo-wrap'	
 				}).css({
@@ -62,7 +77,21 @@
 	    			that.vars.loader = new Image();
 	    			that.vars.loader.src = that.opts.loader;
     				that.functions.showLoader();
-    			}
+    			};
+    			if(that.opts.buttons){
+					var left,right
+					if(typeof that.opts.buttons == 'boolean'){
+						left = $('<a class="kongojo-button kongojo-button-prev">prev</a>');
+						right = $('<a class="kongojo-button kongojo-button-next">next</a>');
+						that.vars.imageHolder.append(left,right);
+					}
+					else {
+						left = $(that.opts.buttons.left);
+						right = $(that.opts.buttons.right);
+					}
+					left.click(that.functions.buttons.left);
+					right.click(that.functions.buttons.right);
+				}
 			}
 			,showLoader : function(){
 				if(that.vars.loader==null)
