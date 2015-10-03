@@ -5,6 +5,7 @@
 		,loader : false
 		,loaderTimeout : 300
 		,buttons : false
+		,autoplay :false
 	}
 	function KongojoConstructor(elem,opts){
 		this.elem = $(elem);
@@ -20,19 +21,18 @@
 			,elements : that.elem.find('a')
 			,current : null
 			,loadTimeout : null
+			,autoplayTimeout : null
 		}
 		that.functions = {
 			buttons : {
 				left : function(e){
 					e.preventDefault();
 					e.stopPropagation();
-					console.log('click')
 					that.elem.trigger('prev');
 				}
 				,right : function(e){
 					e.preventDefault();
 					e.stopPropagation();
-					console.log('click')
 					that.elem.trigger('next');
 				}
 			}
@@ -143,7 +143,15 @@
 	    			that.vars.imageHolder.fadeIn();
 	    			that.functions.setImage($this.attr('href'));
 	    			$(document).keyup(that.functions.bindKeys);
-	    		});
+	    			if(that.opts.autoplay)
+	    				that.functions.autoplay();
+	    		})
+	    	}
+	    	,autoplay : function () {
+	    		clearTimeout(that.vars.autoplayInterval);
+	    		that.vars.autoplayTimeout = setTimeout(function(){
+	    			that.elem.trigger('next');
+    			},that.opts.autoplay)
 	    	}
 	    };
 	    //triggerable events
@@ -154,6 +162,8 @@
     		that.functions.showLoader();
     		that.functions.setImage(obj.attr('href'));
     		that.vars.current = obj;
+    		if(that.opts.autoplay)
+	    		that.functions.autoplay();
     	})	
 	    that.elem.on('prev',function(){
     		var obj = that.vars.current.prev();
@@ -162,6 +172,8 @@
     		that.functions.showLoader();
     		that.functions.setImage(obj.attr('href'));
     		that.vars.current = obj;
+    		if(that.opts.autoplay)
+	    		that.functions.autoplay();
     	})
 	    that.elem.on('close',function(){
     		that.vars.imageHolder.fadeOut();
